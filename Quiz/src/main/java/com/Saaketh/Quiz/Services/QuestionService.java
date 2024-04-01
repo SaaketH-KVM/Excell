@@ -1,5 +1,6 @@
 package com.Saaketh.Quiz.Services;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.Saaketh.Quiz.Helper.MyExcellHelper;
 import com.Saaketh.Quiz.Models.Question;
 import com.Saaketh.Quiz.Repositories.QuestionRepository;
 
@@ -60,6 +63,21 @@ public class QuestionService {
 	public String deleteById(Integer deleteId) {
 		questionrepository.deleteById(deleteId);
 		return "deleted successfully";
+	}
+	
+	public void save(MultipartFile file) {
+		try {
+			List<Question> question= MyExcellHelper.convertExcellToListofProduct(file.getInputStream());
+			this.questionrepository.saveAll(question);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public List<Question> getAllQuestions1(){
+		return this.questionrepository.findAll();
+		
 	}
 
 
