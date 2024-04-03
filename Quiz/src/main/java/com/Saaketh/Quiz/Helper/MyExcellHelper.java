@@ -52,11 +52,8 @@ public class MyExcellHelper {
 					
 					switch(cid) {
 					
-					case 0:
-						p.setId((int) cell.getNumericCellValue());
-						break;
 					
-				    case 1:
+				    case 6:
 				        p.setQuestiontitle(cell.getStringCellValue());
 				        break;
 				    
@@ -76,15 +73,15 @@ public class MyExcellHelper {
 				        p.setOption4(cell.getStringCellValue());
 				        break;
 				    
-				    case 6:
+				    case 7:
 				        p.setRightAnswer(cell.getStringCellValue());
 				        break;
 				    
-				    case 7:
+				    case 1:
 				        p.setDifficultyLevel(cell.getStringCellValue());
 				        break;
 				    
-				    case 8:
+				    case 0:
 				        p.setCategory(cell.getStringCellValue());
 				        break;
 				    }
